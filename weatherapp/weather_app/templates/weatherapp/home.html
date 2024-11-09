@@ -45,6 +45,7 @@
             <div class="columns">
                 <div class="column is-offset-4 is-4">
                     <div class="box">
+                        {% if city %}
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-50x50">
@@ -62,6 +63,9 @@
                                 </div>
                             </div>
                         </article>
+                        {% else %}
+                            City Not Found. Enter correct city Name
+                        {% endif%}
                     </div>
                 </div>
             </div>

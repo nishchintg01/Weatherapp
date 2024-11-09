@@ -21,12 +21,14 @@ def home(request):
     if request.method == 'POST':
         city_name=request.POST['get_city']
         a=weather_forcast(city_name)
-        weather_details={
-        'city':city_name,
-        'description':a['weather'][0]['description'],
-        'temperature':a['main']['temp'],
-        'icon':a['weather'][0]['icon']
-        }
+        weather_details = {"city": None, "description": None, "temperature": None, "icon": None}
+        if int(a.get("cod", 400)) == 200:
+            weather_details={
+            'city':city_name,
+            'description':a['weather'][0]['description'],
+            'temperature':a['main']['temp'],
+            'icon':a['weather'][0]['icon']
+            }
         return render(request,"weatherapp/home.html",weather_details)
     else:
         city_name=find_ip(find_addr)
